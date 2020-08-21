@@ -31,4 +31,7 @@ Route::POST('/project/entry', 'HomeController@entryStore');
 Route::GET('/project/{id}', 'HomeController@showProjectDetail');
 
 // プロフィール
-Route::GET('/profile', 'ProfileController@index');
+
+Route::PATCH('/profile/update', 'ProfileController@editProfile');
+Route::GET('/profile/update/{id}', 'ProfileController@showProfileUpdatePage');
+Route::GET('/profile/{id}', 'ProfileController@index');
