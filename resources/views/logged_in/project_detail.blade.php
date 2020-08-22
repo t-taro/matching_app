@@ -4,7 +4,7 @@
 <div class="container">
   <div class="row justify-content-center">
 
-    <div class="col-7 text-center bg-white px-0">
+    <div class="col-7 text-center bg-white px-0 pb-3">
       @if($project->isMyProject)
       <p class="p-3 bg-success text-white">{{$project->organizer->name}}さんが主催しているプロジェクトです</p>
       @include('../parts/project_detail_part')
@@ -38,6 +38,25 @@
         <button type="submit" class="btn btn-danger">プロジェクトを削除する</button>
       </form>
       @endif
+    </div>
+
+    <div class="col-7 message_area">
+
+      <form action="#" method="post" class="form-inline justify-content-center">
+        <div class="form-group mb-3">
+          <textarea name="message" class="form-control" cols="50" rows="1" placeholder="Please input message here"></textarea>
+        </div>
+        <div class="form-group mx-sm-3 mb-3">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+
+      <div class="msg_left bg-light">
+        <p class="msg_body">Hello. Hello. Hello. Hello. Hello. Hello. Hello.</p>
+      </div>
+      <div class="msg_right bg-light">
+        <p class="msg_body">Hello. Hello. Hello. Hello. Hello. Hello. Hello.</p>
+      </div>
     </div>
   </div>
 </div>
