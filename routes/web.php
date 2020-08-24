@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Events\MessageAdded;
 
 Route::GET('/', 'ProjectController@index');
 
@@ -31,7 +32,13 @@ Route::POST('/project/entry', 'HomeController@entryStore');
 Route::GET('/project/{id}', 'HomeController@showProjectDetail');
 
 // プロフィール
-
 Route::PATCH('/profile/update', 'ProfileController@editProfile');
 Route::GET('/profile/update/{id}', 'ProfileController@showProfileUpdatePage');
 Route::GET('/profile/{id}', 'ProfileController@index');
+
+// メッセージ
+Route::GET('/messages', function(){
+  $message = ['id' => 1, 'message' => 'this is first message'];
+  event(new MessageAdded($message));
+  return view('test');
+});

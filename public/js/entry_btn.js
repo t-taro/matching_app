@@ -117,12 +117,11 @@ entryBtn.addEventListener('click', function () {
     }).then(function (json) {
       if (json.entry === 'complete') {
         entryBtn.classList.remove('btn-outline-primary');
-        entryBtn.classList.add('btn-primary');
+        entryBtn.classList.remove('btn-primary');
         entryBtn.textContent = 'エントリーしました';
         entryBtn.setAttribute("disabled", true);
-        
-        const entryCount = document.getElementById('entryCount');
-        let countNum = parseInt(entryCount.textContent);
+        var entryCount = document.getElementById('entryCount');
+        var countNum = parseInt(entryCount.textContent);
         countNum++;
         entryCount.textContent = countNum;
       }
