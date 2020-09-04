@@ -39,9 +39,3 @@ window.Echo = new Echo({
   cluster: process.env.MIX_PUSHER_APP_CLUSTER,
   forceTLS: true,
 });
-
-window.Echo.channel('message-add-channel')
-  .listen('MessageAdded', function (data) {
-    console.log('received a message');
-    console.log(data.message.message);
-  });

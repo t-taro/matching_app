@@ -11,9 +11,7 @@
   <title>{{ config('app.name', 'Laravel') }}</title>
 
   <!-- Scripts -->
-  <script src="{{ asset('js/app.js') }}" defer></script>
-  <script src="{{ asset('js/entry_btn.js') }}" defer></script>
-  <script src="{{ asset('js/level.js') }}" defer></script>
+  
 
   <!-- Fonts -->
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -61,7 +59,8 @@
               </li>
               @endif
               @else
-              <li class="nav-item dropdown">
+              <li class="nav-item dropdown d-flex align-items-center">
+                <notification :current-user="{{Auth::id()}}"></notification>
                 <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                   {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
@@ -88,6 +87,9 @@
       @yield('content')
     </main>
   </div>
+  <script src="{{ asset('js/app.js') }}" defer></script>
+  @stack('project_detail')
+  @stack('project_form_script')
 </body>
 
 </html>

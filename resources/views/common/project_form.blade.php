@@ -59,3 +59,6 @@
     > 
   </div>
 </form>
+@push('project_form_script')
+  <script src="{{ asset('js/level.js') }}" defer></script>
+@endpush

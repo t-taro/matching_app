@@ -15,14 +15,16 @@ class MessageAdded implements ShouldBroadcast
   use Dispatchable, InteractsWithSockets, SerializesModels;
   
   public $message;
+  public $userName;
 
-  public function __construct($message)
+  public function __construct($message, $userName)
   {
     $this->message = $message;
+    $this->userName = $userName;
   }
 
   public function broadcastOn()
   {
-    return new Channel('message-add-channel', $this->message);
+    return new Channel('message-add-channel');
   }
 }

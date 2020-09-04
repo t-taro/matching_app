@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Project;
 use App\User;
+use App\Message;
 
 class HomeController extends Controller
 {
@@ -151,8 +152,14 @@ class HomeController extends Controller
         $project['isEntried'] = true;
       }
     }
-
-    return view('logged_in/project_detail', compact('project', 'entryUsers'));
+    
+    
+    $messages = $project->messages;
+    foreach($messages as $msg){
+      $msg['user_name'] = User::findOrFail($msg->user_id)->name;
+    }
+    
+    return view('logged_in/project_detail', compact('project', 'entryUsers', 'messages'));
   }
   
   public function showNewProjectPage()
@@ -218,6 +225,9 @@ class HomeController extends Controller
     
     // プロジェクトを削除
     Project::findOrFail($request->id)->delete();
+    
+    // プロジェクトに紐づくメッセージも削除
+    Message::where('project_id', $request->id)->delete();
     
     return redirect("/home");
   }

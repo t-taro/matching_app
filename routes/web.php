@@ -36,9 +36,14 @@ Route::PATCH('/profile/update', 'ProfileController@editProfile');
 Route::GET('/profile/update/{id}', 'ProfileController@showProfileUpdatePage');
 Route::GET('/profile/{id}', 'ProfileController@index');
 
-// メッセージ
+// メッセージ登録
+Route::POST('/message/store', 'MessageController@store');
+
+// メッセージエリア用　ログイン中のユーザー情報を取得
+Route::GET('/message/getCurrentUser', 'MessageController@getCurrentUser');
+
+// テスト用
 Route::GET('/messages', function(){
-  $message = ['id' => 1, 'message' => 'this is first message'];
-  event(new MessageAdded($message));
   return view('test');
 });
+

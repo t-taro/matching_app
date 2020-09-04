@@ -1,3 +1,12 @@
+a{
+  text-decoration: none;
+  color: #000;
+}
+
+a:hover{
+  text-decoration: none;
+}
+
 ul{
   padding-left: 0;
 }
@@ -5,6 +14,54 @@ ul{
 li{
   list-style: none;
   user-select: none;
+}
+
+.hidden{
+  display: none;
+}
+
+/* layout */
+#notification-wrapper{
+  height: 24px;
+  width: 24px;
+  position: relative;
+}
+
+#bell-icon{
+  color: #fff;
+  cursor: pointer;
+  user-select: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+#notice-mark{
+  background-color: tomato;
+  border-radius: 4px;
+  height: 8px;
+  width: 8px;
+  position: absolute;
+  top: 2px;
+  right: 2px;
+}
+
+.notice-list-wrapper{
+  min-width: 15rem;
+  position: absolute;
+  top: 29px;
+  right: 0;
+  z-index: 100;
+}
+
+.notice-message{
+  margin: 0;
+  font-size: 0.8rem;
+}
+
+/* テスト用 */
+.op{
+  opacity: 0.8;
 }
 
 /* profile */
@@ -26,16 +83,30 @@ li{
 
 .msg_left,
 .msg_right{
-  margin: 12px;
+  margin:0 12px 12px;
+  padding: 0 12px;
   width: 60%;
   position: relative;
   border-radius: 4px;
+}
+
+
+
+.msg_body{
+  margin: 0;
+  padding: 4px 0;
 }
 
 .msg_right{
   margin-left: auto;
 }
 
+
+.user_name_left,
+.user_name_right
+{
+  margin:0 12px 24px;
+}
 
 
 .msg_left::after{

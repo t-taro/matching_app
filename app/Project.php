@@ -18,4 +18,9 @@ class Project extends Model
   {
     return $this->belongsToMany('App\User');
   }
+  
+  public function messages()
+  {
+    return $this->hasMany('App\Message');
+  }
 }
