@@ -24,7 +24,6 @@ class UpdateNotice implements ShouldBroadcast
         $this->message = $message;
         $this->userName = $userName;
         $this->project = $project;
-        
     }
 
     /**
@@ -34,6 +33,9 @@ class UpdateNotice implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('notification-channel.'.$this->project->organizer_id);
+        // return new PrivateChannel('notification-channel.'.$this->project->organizer_id);
+        
+        return new PresenceChannel('notification-channel.'.$this->project->id);
+        
     }
 }

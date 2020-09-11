@@ -18,13 +18,21 @@ export default {
   data() {
     return {
       notifications: [],
-      messageId : '',
+      projectId : '',
       isHiddenForNoticeMark: true,
       isHiddenForMsgList: true
     };
   },
   mounted() {
-    window.Echo.private("notification-channel." + this.currentUser)
+    // window.Echo.private("notification-channel." + this.currentUser)
+    //             .listen("UpdateNotice", response =>
+    //             {
+    //               response.message.user_name = response.userName;
+    //               this.notifications.unshift(response.message);
+    //               this.ToggleNotificationIcon();
+    //             });
+                
+    window.Echo.join("notification-channel." + 1)
                 .listen("UpdateNotice", response =>
                 {
                   response.message.user_name = response.userName;

@@ -26,8 +26,9 @@ class MessageController extends Controller
     $message = Message::create($data);
     $userName = User::findOrFail($message->user_id)->name;
     $project = Project::findOrFail($request->project_id);
+
     event((new MessageAdded($message, $userName))->dontBroadcastToCurrentUser());
-    event((new UpdateNotice($message, $userName, $project))->dontBroadcastToCurrentUser());
+    broadcast(new UpdateNotice($message, $userName, $project))->toOthers();
     $message->user_name = $userName;
     return $message;
   }
